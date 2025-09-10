@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Course Chapter Quiz</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="quiz-container">
+      <header class="quiz-header">
+        <h1>Course Chapter Quiz</h1>
+        <div class="controls">
+          <label for="chapterSelect">Chapter:</label>
+          <select id="chapterSelect" class="select"></select>
+
+          <label for="questionCount">Questions:</label>
+          <input
+            id="questionCount"
+            type="number"
+            min="1"
+            max="20"
+            value="5"
+          />
+
+          <button id="generateBtn" class="btn btn-primary">Generate</button>
+          <a
+            id="downloadJson"
+            class="btn"
+            download="questions.json"
+            style="display: none"
+            >Download JSON</a
+          >
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </header>
+
+      <main>
+        <div id="loading" class="loading-overlay" style="display: none">
+          Generating…
+        </div>
+
+        <div id="quiz">
+          <h2 id="questionText">Select a chapter and click Generate.</h2>
+          <div id="options" class="options"></div>
+
+          <div class="actions">
+            <button id="nextBtn" class="btn" disabled>Next</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
